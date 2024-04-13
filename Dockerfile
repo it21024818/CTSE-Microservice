@@ -41,7 +41,7 @@ RUN npm ci --omit=dev
 
 # Copy production build
 COPY --from=development /app/dist/ ./dist/
-# COPY --from=development /app/assets/ ./assets/
+COPY --from=development /app/assets/ ./assets/
 # COPY /app/assets/ assets/
 
 # Expose application port
