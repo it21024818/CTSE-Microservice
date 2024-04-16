@@ -58,6 +58,15 @@ $ yarn run test:e2e
 $ yarn run test:cov
 ```
 
+## Docker
+```bash
+# build image
+$ docker build -t ctse-proj .
+
+# start container
+$ docker run -dp 127.0.0.1:3000:3000 ctse-proj
+```
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
