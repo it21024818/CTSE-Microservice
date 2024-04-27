@@ -14,7 +14,8 @@ COPY tsconfig*.json ./
 COPY package*.json ./
 
 # Install dependencies from package-lock.json (yarn equivalent of npm ci)
-RUN yarn install --frozen
+RUN yarn install --frozen --network-timeout 3600000
+# 1 hour timeout
 
 # Copy application sources (.ts, .tsx, js)
 COPY src/ src/
