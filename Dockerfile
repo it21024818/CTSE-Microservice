@@ -21,6 +21,9 @@ RUN yarn install --frozen --network-timeout 3600000
 COPY src/ src/
 COPY assets/ assets/
 
+# Copy the .env file
+COPY ./.env ./
+
 # Build application (produces dist/ folder)
 RUN yarn run build
 
@@ -38,6 +41,9 @@ WORKDIR /app
 # Copy dependencies files
 COPY package*.json ./
 
+# Copy the .env file to the production environment
+# COPY --from=0 ./.env ./
+
 # Install runtime dependencies (without dev/test dependencies) - yarn equivalent of npm ci --omit=dev
 RUN yarn install --production
 
@@ -46,8 +52,10 @@ COPY --from=development /app/dist/ ./dist
 COPY --from=development /app/assets/ ./assets
 # COPY /app/assets/ assets/
 
+ENV MONGO_URI=mongodb+srv://ctse:YaUEgNSjxelRNK6e@cluster0.si5f4r0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+
 # Expose application port
-EXPOSE 3000
+EXPOSE 8000
 
 # Start application
 CMD [ "node", "dist/main.js" ]

@@ -51,7 +51,7 @@ import { JwtTokenService } from './auth/jwt-token.service';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        uri: 'mongodb+srv://ctse:YaUEgNSjxelRNK6e@cluster0.si5f4r0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
+        uri: process.env.MONGO_URI || configService.get(ConfigKey.MONGO_URI),
       }),
     }),
     MailerModule.forRootAsync({
