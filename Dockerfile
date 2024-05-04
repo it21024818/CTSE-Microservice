@@ -52,11 +52,6 @@ COPY --from=development /app/dist/ ./dist
 COPY --from=development /app/assets/ ./assets
 # COPY /app/assets/ assets/
 
-ENV MONGO_URI=mongodb+srv://ctse:YaUEgNSjxelRNK6e@cluster0.si5f4r0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-ENV SMTP_HOST=smtp.gmail.com
-ENV SMTP_USER=spm.project.noreply
-ENV SMTP_PASS=rslffemjtvtsasrn
-
 # Expose application port
 EXPOSE 8000
 
